@@ -14,4 +14,5 @@ RoxygenNote: 7.3.2
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-
+URL: https://github.com/JiujingWu/AHD
+BugReports: https://github.com/JiujingWu/AHD/issues
