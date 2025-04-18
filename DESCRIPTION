@@ -1,0 +1,17 @@
+Package: AHD
+Type: Package
+Title: Adaptive Hellinger Distance for Testing Independence
+Version: 0.1.0
+Authors@R: c(
+    person("Jiujing", "Wu", email = "jiujingwu@foxmail.com", role = c("aut", "cre", "cph")), 
+    person("Wenwen", "Guo", email = "guowenwen114@163.com", role = c("aut")))
+Description: Implements the Adaptive Hellinger Distance (AHD) index and perform a permutation test for testing independence between two random vectors. 
+          It includes functions for computing the AHD statistic, conducting permutation test, and combining p-values. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+
