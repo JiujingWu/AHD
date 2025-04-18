@@ -12,7 +12,6 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-https://github.com/JiujingWu/AHD
 
 # Adaptive Hellinger Distance (AHD) for Testing Independence between two random vectors
 <!-- badges: start -->
