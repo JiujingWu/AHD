@@ -1,22 +1,32 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<https://github.com/JiujingWu/AHD>
-
 # Adaptive Hellinger Distance (AHD) for Testing Independence between two random vectors
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/wzhong41/semidist/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/wzhong41/semidist/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end --> The goal of package `AHD` is to provide an easy way
-to implement the Adaptive Hellinger Distance.
+to implement the Adaptive Hellinger Distance(AHD).
+
+Key features:
+
+- A rank-based independence test using the AHD.
+
+- The AHD-based tests address the potential zeros in the denominators of
+  the HHG test statistic.
+
+- The AHD-based tests inherit the robustness of the HHG test while
+  conservatively improving its performance.
+
+- The AHD tests can be regarded as a crucial extension of the HHG test.
 
 ## Installation
 
 To install `AHD`,
 
 ``` r
-install.packages("AHD")
+devtools::install_github("JiujingWu/AHDPackage")
 ```
 
 ## Example
