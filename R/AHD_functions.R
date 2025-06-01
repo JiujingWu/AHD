@@ -93,11 +93,11 @@ AHD_test_4bins = function(x, y, method = "manhattan", B = 299) {
     if (AHD_star21 >= AHD_n_21) { num_rej21 = num_rej21 + 1 }
     if (AHD_star22 >= AHD_n_22) { num_rej22 = num_rej22 + 1 }
   }
-  pvalue = (num_rej+1) / (B+1)
-  pvalue11 = (num_rej11+1) / (B+1)
-  pvalue12 = (num_rej12+1) / (B+1)
-  pvalue21 = (num_rej21+1) / (B+1)
-  pvalue22 = (num_rej22+1) / (B+1)
+  pvalue = (num_rej+1) / (B+2)
+  pvalue11 = (num_rej11+1) / (B+2)
+  pvalue12 = (num_rej12+1) / (B+2)
+  pvalue21 = (num_rej21+1) / (B+2)
+  pvalue22 = (num_rej22+1) / (B+2)
   return(list(pvalue = pvalue, pvalue11 = pvalue11, pvalue12 = pvalue12, pvalue21 = pvalue21, pvalue22 = pvalue22))
 }
 
