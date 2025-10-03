@@ -1,48 +1,48 @@
-#' Adaptive Hellinger Distance (AHD): statistic and permutation test
+#' Adaptive Hellinger Distance (AHD) statistic
 #'
-#' @description
-#' \code{AHD()} computes the AHD statistic (and its four quadrant
-#' components) from two \eqn{n \times n} distance matrices.
-#' \code{AHD_test()} performs a permutation test using a precomputed
-#' permutation table (rows are permutations of \code{1:n}).
+#' Computes the AHD statistic (and its four quadrant components) from two
+#' n x n distance matrices.
 #'
-#' @param Dx Numeric \eqn{n \times n} distance matrix for \eqn{X}.
-#' @param Dy Numeric \eqn{n \times n} distance matrix for \eqn{Y}.
-#' @param perms Integer matrix of size \eqn{B \times n}; each row is a
-#'   permutation of \code{1:n}. (**Only for** \code{AHD_test()}).
-#'
-#' @return
-#' * \code{AHD()}: list with \code{AHD}, \code{AHD11}, \code{AHD12},
-#'   \code{AHD21}, \code{AHD22}.
-#' * \code{AHD_test()}: list with permutation p-values \code{pvalue},
-#'   \code{pvalue11}, \code{pvalue12}, \code{pvalue21}, \code{pvalue22}.
-#'
-#' @details
-#' Permutation p-values use the unbiased formula \eqn{(k+1)/(B+2)}.
-#' Ties in ranks are handled by the max-rank rule.
-#' Distances can be any metric, but \code{Dx} and \code{Dy} must both be
-#' \eqn{n \times n} with the same \eqn{n}.
-#'
-#' @usage AHD(Dx, Dy)
-#' @usage AHD_test(Dx, Dy, perms)
-#'
+#' @param Dx numeric n x n distance matrix for X.
+#' @param Dy numeric n x n distance matrix for Y.
+#' @return A list with components `AHD`, `AHD11`, `AHD12`, `AHD21`, `AHD22`.
+#' @details Distances can be any metric; Dx and Dy must share the same n.
 #' @examples
 #' \donttest{
-#' set.seed(1)
-#' n <- 20; B <- 50
+#' set.seed(1); n <- 20
 #' x <- runif(n); y <- rnorm(n)
-#' Dx <- as.matrix(dist(x, method = "manhattan", diag = T, upper = T))
-#' Dy <- as.matrix(dist(y, method = "manhattan", diag = T, upper = T))
-#' # observed statistic
-#' AHD_stat = AHD(Dx, Dy)
-#' # permutation test (rows are permutations of 1..n)
-#' perms <- t(replicate(B, sample.int(n)))
-#' AHD_perm_test = AHD_test(Dx, Dy, perms)
+#' Dx <- as.matrix(dist(x, method = "manhattan", diag = TRUE, upper = TRUE))
+#' Dy <- as.matrix(dist(y, method = "manhattan", diag = TRUE, upper = TRUE))
+#' AHD(Dx, Dy)
 #' }
+#' @export
+AHD <- function(Dx, Dy) {
+  .Call(`_AHD_AHD`, Dx, Dy)
+}
+
+#' Permutation test for AHD
 #'
-#' @name AHD
-#' @aliases AHD AHD_test
-NULL
+#' Performs a permutation test using a precomputed permutation table
+#' (rows are permutations of 1..n). The unbiased p-value formula (k+1)/(B+2)
+#' is used.
+#'
+#' @param Dx numeric n x n distance matrix for X.
+#' @param Dy numeric n x n distance matrix for Y.
+#' @param perms integer matrix B x n; each row a permutation of 1..n.
+#' @return A list with p-values: `pvalue`, `pvalue11`, `pvalue12`, `pvalue21`, `pvalue22`.
+#' @examples
+#' \donttest{
+#' set.seed(1); n <- 20; B <- 50
+#' x <- runif(n); y <- rnorm(n)
+#' Dx <- as.matrix(dist(x, method = "manhattan", diag = TRUE, upper = TRUE))
+#' Dy <- as.matrix(dist(y, method = "manhattan", diag = TRUE, upper = TRUE))
+#' perms <- t(replicate(B, sample.int(n)))
+#' AHD_test(Dx, Dy, perms)
+#' }
+#' @export
+AHD_test <- function(Dx, Dy, perms) {
+  .Call(`_AHD_AHD_test`, Dx, Dy, perms)
+}
 
 
 

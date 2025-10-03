@@ -2,53 +2,31 @@
 % Please edit documentation in R/AHD_wrappers.R
 \name{AHD}
 \alias{AHD}
-\alias{AHD_test}
-\title{Adaptive Hellinger Distance (AHD): statistic and permutation test}
+\title{Adaptive Hellinger Distance (AHD) statistic}
 \usage{
 AHD(Dx, Dy)
-
-AHD_test(Dx, Dy, perms)
 }
 \arguments{
-\item{Dx}{Numeric \eqn{n \times n} distance matrix for \eqn{X}.}
+\item{Dx}{numeric n x n distance matrix for X.}
 
-\item{Dy}{Numeric \eqn{n \times n} distance matrix for \eqn{Y}.}
-
-\item{perms}{Integer matrix of size \eqn{B \times n}; each row is a
-permutation of \code{1:n}. (\strong{Only for} \code{AHD_test()}).}
+\item{Dy}{numeric n x n distance matrix for Y.}
 }
 \value{
-\itemize{
-\item \code{AHD()}: list with \code{AHD}, \code{AHD11}, \code{AHD12},
-\code{AHD21}, \code{AHD22}.
-\item \code{AHD_test()}: list with permutation p-values \code{pvalue},
-\code{pvalue11}, \code{pvalue12}, \code{pvalue21}, \code{pvalue22}.
-}
+A list with components \code{AHD}, \code{AHD11}, \code{AHD12}, \code{AHD21}, \code{AHD22}.
 }
 \description{
-\code{AHD()} computes the AHD statistic (and its four quadrant
-components) from two \eqn{n \times n} distance matrices.
-\code{AHD_test()} performs a permutation test using a precomputed
-permutation table (rows are permutations of \code{1:n}).
+Computes the AHD statistic (and its four quadrant components) from two
+n x n distance matrices.
 }
 \details{
-Permutation p-values use the unbiased formula \eqn{(k+1)/(B+2)}.
-Ties in ranks are handled by the max-rank rule.
-Distances can be any metric, but \code{Dx} and \code{Dy} must both be
-\eqn{n \times n} with the same \eqn{n}.
+Distances can be any metric; Dx and Dy must share the same n.
 }
 \examples{
 \donttest{
-set.seed(1)
-n <- 20; B <- 50
+set.seed(1); n <- 20
 x <- runif(n); y <- rnorm(n)
-Dx <- as.matrix(dist(x, method = "manhattan", diag = T, upper = T))
-Dy <- as.matrix(dist(y, method = "manhattan", diag = T, upper = T))
-# observed statistic
-AHD_stat = AHD(Dx, Dy)
-# permutation test (rows are permutations of 1..n)
-perms <- t(replicate(B, sample.int(n)))
-AHD_perm_test = AHD_test(Dx, Dy, perms)
+Dx <- as.matrix(dist(x, method = "manhattan", diag = TRUE, upper = TRUE))
+Dy <- as.matrix(dist(y, method = "manhattan", diag = TRUE, upper = TRUE))
+AHD(Dx, Dy)
 }
-
 }

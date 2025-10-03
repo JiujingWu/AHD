@@ -3,6 +3,6 @@
 
 ## usethis namespace: start
 #' @useDynLib AHD, .registration = TRUE
-#' @importFrom Rcpp evalCpp
+#' @importFrom Rcpp sourceCpp
 ## usethis namespace: end
 NULL

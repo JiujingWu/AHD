@@ -21,7 +21,7 @@ Key features:
 
 To install `AHD`, 
 ``` r
-devtools::install_github("JiujingWu/AHD")
+remotes::install_github("JiujingWu/AHD")
 ```
 
 ## Example
@@ -32,12 +32,18 @@ and apply the test statistic on testing the independence and conduct p-values co
 ``` r
 library(AHD)
 
+B <- 300
 n <- 50
 x <- runif(n, 0, 1)
 y <- x * (sample(c(-1, 1), size = n, replace = TRUE)) + runif(n, -0.5, 0.5)
 
-AHD <- AHD(x, y)
-AHD_4bins_pval <- AHD_test_4bins(x, y, B = 199)
+perms <- t(replicate(B, sample.int(n), simplify = "matrix"))
+
+Dx <- as.matrix(dist(x, method = "manhattan", diag = T, upper = T))
+Dy <- as.matrix(dist(y, method = "manhattan", diag = T, upper = T))
+  
+AHD_stat <- AHD(Dx, Dy)
+AHD_4bins_pval <- AHD_test(Dx, Dy, perms)
 p_AHD <- AHD_4bins_pval$pvalue
 p_AHD_11 <- AHD_4bins_pval$pvalue11
 p_AHD_12 <- AHD_4bins_pval$pvalue12
