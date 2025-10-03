@@ -1,0 +1,22 @@
+Package: AHD
+Type: Package
+Title: Adaptive Hellinger Distance for Testing Independence
+Version: 0.1.2
+Authors@R: 
+    c(
+    person("Jiujing", "Wu", email = "jiujingwu@foxmail.com", role = c("aut", "cre", "cph")), 
+    person("Wenwen", "Guo", email = "guowenwen114@163.com", role = c("aut")))
+Description: Implements the Adaptive Hellinger Distance (AHD) index and perform a permutation test for testing independence between two random vectors. 
+          It includes functions for computing the AHD statistic, conducting permutation test, and combining p-values. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports: Rcpp, RcppParallel, stats
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+LinkingTo: Rcpp, RcppParallel
+SystemRequirements: C++11
+Suggests: 
+    knitr,
+    rmarkdown
+URL: https://github.com/JiujingWu/AHD
+BugReports: https://github.com/JiujingWu/AHD/issues

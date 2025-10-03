@@ -1,0 +1,29 @@
+# R/RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# Package build/check artifacts
+.Rcheck/
+.Rbuildignore
+inst/doc/
+vignettes/*.html
+vignettes/*.R
+*_cache/
+*.utf8.md
+*.knit.md
+
+# Compiled objects (from src/)
+src/*.o
+src/*.so
+src/*.dll
+src/*.a
+src/*.dSYM/
+
+# Windows/OneDrive temporary files
+Thumbs.db
+Desktop.ini
+~$*
+*.tmp
