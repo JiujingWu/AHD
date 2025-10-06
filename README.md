@@ -14,7 +14,11 @@ Key features:
 
 - The AHD-based tests inherit the robustness of the HHG test while conservatively improving its performance.
 
-- The AHD tests can be regarded as a crucial extension of the HHG test.
+- The AHD tests can be regarded as a crucial extension of the HHG test. 
+
+- By default, the Manhattan ($L_1$) norm is used as the distance metric for both $X$ and $Y$ spaces. 
+
+- Distance ties are handled using the max-rank method with stable sorting, and self-distances are excluded when computing ranks.
 
 
 ## Installation
